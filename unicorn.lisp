@@ -234,6 +234,15 @@ error code as the second."
 	  (user-data :pointer))
        (funcall ,fn uc address size user-data))))
 
+	
+;; didnt get the macro above to work .. error in gensym symbol not of system type ..
+;; use callback-ptr instead..
+;; e.g.
+;; (cffi:defcallback codehook :void ((uc unicorn::unicorn-engine) (address :uint64)(size :uint32)(user-data :pointer))
+;;	(funcall 'code-hook-show-inst uc address size user-data))
+;;
+;; (unicorn::uc-hook-add *uc* 0 4096 :callback-ptr (cffi:callback codehook) :hook-type :code :user-data user-data)
+	
 (defun uc-hook-add (engine begin end
                     &key
                       (fn)
