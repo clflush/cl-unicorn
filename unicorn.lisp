@@ -113,8 +113,7 @@ error code as the second."
       (let ((err (%uc-reg-read engine
 			      regid ;;(%reg->regid register :arch arch)
 			      valptr)))
-      ;; (values (mem-ref valptr type) err)))))
-      (values (mem-ref valptr type) err))))
+      (values (mem-ref valptr type) err)))))
 
 (defun uc-reg-write-batch (engine registers values
                            &key (type :uint64) (arch :arm))
